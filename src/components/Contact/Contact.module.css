@@ -1,0 +1,84 @@
+.contact {
+	padding: 20px 15px;
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 20px;
+	background-color: #252728;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.field {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	gap: 15px;
+}
+
+.fieldItem {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.fieldValue {
+	word-break: break-all;
+}
+
+.icon {
+	flex-shrink: 0;
+	font-size: 1.1em;
+	position: relative;
+	top: -1px;
+}
+
+.fieldBtn,
+.deleteBtn {
+	background-color: #3B3D3E;
+	border-radius: 5px;
+	padding: 8px 10px;
+	display: flex;
+	align-items: center;
+	outline: none;
+	transition: background-color 0.3s ease 0s, box-shadow 0.3s ease, color 0.3s ease 0s;
+
+	&:hover {
+		background-color: #505153;
+	}
+
+	&:focus {
+		background-color: #505153;
+		box-shadow: 0 0 0 2px #0866FF;
+	}
+}
+
+.deleteBtn {
+	padding: 8px 15px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	color: #F02849;
+	gap: 8px;
+
+	&:hover,
+	&:focus {
+		background-color: #F02849;
+		box-shadow: none;
+		color: #fff;
+	}
+
+	.deleteBtnIcon {
+		transform: scaleX(-1);
+		font-size: 1.1em;
+		position: relative;
+		top: -1px;
+	}
+}

@@ -1,0 +1,81 @@
+.modalWrap {
+	width: 350px;
+	max-width: 90vw;
+	max-height: 90vh;
+	padding: 30px 15px 20px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+	background-color: #252728;
+}
+
+.title {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 12px;
+	font-size: 22px;
+	font-weight: 500;
+
+	.icon {
+		font-size: 32px;
+	}
+
+	color: #F44336;
+}
+
+.content {
+	p {
+		line-height: 1.4;
+
+		&:not(:last-child) {
+			margin-bottom: 12px;
+		}
+	}
+}
+
+.btn {
+	background-color: #0866FF;
+	border-radius: 5px;
+	padding: 7px 20px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	margin: 0 auto;
+	outline: none;
+	transition: background-color 0.3s ease 0s;
+
+	&:hover,
+	&:focus {
+		background-color: #4A74F3;
+	}
+}
+
+.btnClose {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	font-size: 22px;
+	background-color: #3B3D3E;
+	color: #E2E5E9;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-color 0.3s ease 0s;
+
+	&:hover,
+	&:focus {
+		background-color: #4F5052;
+	}
+
+	&:focus {
+		outline: 2px solid #0866FF;
+	}
+}
