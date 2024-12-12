@@ -27,6 +27,7 @@ const ContactList = () => {
 		}
 	}, [isSuccessAdd, isSuccessDelete, dispatch]);
 
+
 	return (
 		<>
 			<ul className={s.list}>

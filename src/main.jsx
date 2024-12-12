@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 import { persistor, store } from "./redux/store";
 import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
+import { HelmetProvider } from 'react-helmet-async';
 
 // Установка кореневого елемента для бібліотеки React Modal.
 Modal.setAppElement('#root');
@@ -16,7 +17,9 @@ createRoot(document.getElementById('root')).render(
 		<Provider store={store}>
 			<BrowserRouter>
 				<PersistGate loading={null} persistor={persistor}>
-					<App />
+					<HelmetProvider>
+						<App />
+					</HelmetProvider>
 				</PersistGate>
 			</BrowserRouter>
 		</Provider>

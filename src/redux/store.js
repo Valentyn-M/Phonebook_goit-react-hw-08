@@ -23,7 +23,7 @@ const persistConfig = {
 	key: 'auth',
 	version: 1,
 	storage,
-	whitelist: ['token'],
+	whitelist: ['token'], // Зберігаємо лише ключ
 };
 // 3
 const persistedReducer = persistReducer(persistConfig, authReducer);

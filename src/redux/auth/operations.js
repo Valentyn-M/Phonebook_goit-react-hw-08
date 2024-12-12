@@ -74,9 +74,10 @@ export const refreshUser = createAsyncThunk(
 	'auth/refresh',
 	async (_, thunkAPI) => {
 		// Reading the token from the state via getState()
-		const state = thunkAPI.getState();
-		const savedToken = state.auth.token;
+		// Функція getState() повертає весть стор (з усіма слайсами)
+		const savedToken = thunkAPI.getState().auth.token;
 
+		// Перевіряємо чи є токен у нашому стейті (паттерн "Швидке повернення")
 		if (!savedToken) {
 			// If there is no token, exit without performing any request
 			return thunkAPI.rejectWithValue('Unable to fetch user');

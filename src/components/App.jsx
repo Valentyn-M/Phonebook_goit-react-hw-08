@@ -17,12 +17,15 @@ const ContactsPage = lazy(() => import("../pages/ContactsPage/ContactsPage"));
 function App() {
 
 	const dispatch = useDispatch();
-	const isRefreshing = useSelector(selectIsRefreshing);
-
 	useEffect(() => {
+		// При переході до будь-якого компоненту нашого додатку ми робимо запит на сервер
+		// Робимо запит на бекенд, щоб отримати дані про користувача (ключ цього користвуача є у локальному сховищі браузера, який при через persist записується у стан state.auth.token)
+		// Тобто ми перевіряємо чи є залогінений користувач
 		dispatch(refreshUser());
 	}, [dispatch]);
 
+	const isRefreshing = useSelector(selectIsRefreshing);
+	// Рендеримо додаток тільки коли перевірка користувача (isRefreshing) закінчилась (або fulfilled, або rejected) - не pending
 	return isRefreshing ? (
 		<Loader />
 	) : (

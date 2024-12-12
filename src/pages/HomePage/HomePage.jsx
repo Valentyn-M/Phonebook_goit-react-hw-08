@@ -6,6 +6,8 @@ const HomePage = () => {
 		<div>
 			<DocumentTitle>Phonebook | Home</DocumentTitle>
 			<h1>Home page</h1>
+			<p>Загальна інформація</p>
+			<p>Інформація для незалогінених користувачів: зробіть логін або реєстрацію</p>
 		</div>
 	)
 }

@@ -8,7 +8,7 @@ const initialState = {
 	},
 	token: null,
 	isLoggedIn: false,
-	isRefreshing: false,
+	isRefreshing: false, // для відстеження стану оновлення юзера (refreshUser)
 	loading: false,
 	error: null,
 }
