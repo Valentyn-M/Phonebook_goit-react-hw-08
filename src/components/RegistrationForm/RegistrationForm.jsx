@@ -6,10 +6,11 @@ import { RiLockPasswordLine } from 'react-icons/ri';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../redux/auth/operations';
 import { NavLink } from 'react-router-dom';
-import { selectError, selectIsLoggedIn, selectUser } from '../../redux/auth/selectors';
+import { selectError, selectIsLoggedIn, selectLoading, selectUser } from '../../redux/auth/selectors';
 import { useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import ModalErrorAuth from '../ModalErrorAuth/ModalErrorAuth';
+import Loader from '../Loader/Loader';
 
 const RegistrationForm = () => {
 	const initialValues = {
@@ -51,8 +52,8 @@ const RegistrationForm = () => {
 		};
 	}, [isLoggedIn, userName, dispatch]);
 
+	const isLoading = useSelector(selectLoading);
 	const error = useSelector(selectError);
-
 	const errorText = error?.includes("400")
 		? "Check the entered data and make sure it is correct. Perhaps a user with this email already exists."
 		: "Please refresh the page and try again.";
@@ -97,6 +98,7 @@ const RegistrationForm = () => {
 				</div>
 			</div>
 
+			{isLoading && <Loader />}
 			{error && <ModalErrorAuth message={errorText} />}
 			<Toaster
 				position="top-center"

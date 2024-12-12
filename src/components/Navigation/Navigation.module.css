@@ -15,6 +15,7 @@
 	height: 100%;
 	position: relative;
 	outline: none;
+	font-weight: 500;
 
 	.homeNav & {
 		font-size: 22px;
