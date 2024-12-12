@@ -3,10 +3,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import s from "./Contact.module.css"
 import { MdOutlinePersonOutline, MdOutlinePersonRemove, MdOutlinePhone } from "react-icons/md";
-import { toggleModalDelete, toggleModalName, toggleModalNumber } from "../../redux/modalsSlice";
+import { toggleModalDelete, toggleModalName, toggleModalNumber } from "../../redux/modals/slice";
 import ModalName from "../ModalName/ModalName";
 import ModalNumber from "../ModalNumber/ModalNumber";
-import { selectActiveContactId, selectModalDelete, selectModalName, selectModalNumber } from "../../redux/selectors";
+import { selectActiveContactId, selectModalDelete, selectModalName, selectModalNumber } from "../../redux/modals/selectors";
 import { TbEdit } from "react-icons/tb";
 import ModalDelete from "../ModalDelete/ModalDelete";
 

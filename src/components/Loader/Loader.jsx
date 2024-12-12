@@ -15,7 +15,7 @@ const Loader = () => {
 		<div className={s.overlay}>
 			<div className={s.loader}>
 				<HashLoader
-					color="#0866FF"
+					color="#078FFF"
 					size={80}
 					aria-label="Loading Spinner"
 				/>

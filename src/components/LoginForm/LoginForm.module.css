@@ -1,0 +1,175 @@
+.loginFormWrap {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: auto;
+}
+
+.loginForm {
+	border-radius: 8px;
+	padding: 25px;
+	width: 100%;
+	max-width: 410px;
+	background-color: var(--main-bg-color);
+	border: 1px solid var(--main-border-color);
+}
+
+.title {
+	text-align: center;
+	margin-bottom: 25px;
+	font-size: 22px;
+	font-weight: 500;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 35px;
+	margin-bottom: 25px;
+}
+
+.label {
+	display: flex;
+	gap: 12px;
+}
+
+.fieldWrap {
+	width: 100%;
+	position: relative;
+}
+
+.fieldIcon {
+	position: absolute;
+	top: calc(50% - 1px);
+	left: 14px;
+	transform: translateY(-50%);
+	transition: color 0.3s ease 0s;
+
+	&.person {
+		font-size: 1.1em;
+	}
+
+	.fieldWrap.error & {
+		color: var(--error-color);
+	}
+}
+
+.field {
+	border-radius: 5px;
+	padding: 12px 15px 12px 41px;
+	width: 100%;
+	color: #fff;
+	background-color: var(--main-bg-color);
+	border: 1px solid #fff;
+	border-color: rgba(255, 255, 255, .7);
+	outline: none;
+	transition: color 0.3s ease 0s, border-color 0.3s ease 0s, box-shadow 0.3s ease;
+	font-size: 16px;
+
+	&:hover,
+	&:focus {
+		border-color: var(--brand-color);
+	}
+
+	&:focus {
+		box-shadow: 0 0 0 1px var(--brand-color);
+	}
+
+	.fieldWrap.error & {
+		border-color: var(--error-color);
+		color: var(--error-color);
+
+		&:focus {
+			box-shadow: 0 0 0 1px var(--error-color);
+		}
+	}
+}
+
+.floatingLabel {
+	position: absolute;
+	top: 50%;
+	left: 36px;
+	transform: translateY(-50%);
+	padding: 0 5px;
+	border-radius: 5px;
+	background-color: var(--main-bg-color);
+	color: rgba(255, 255, 255, .4);
+	transition: top 0.3s ease, transform 0.3s ease, font-size 0.3s ease, color 0.3s ease 0s;
+	pointer-events: none;
+
+	.fieldWrap.error & {
+		color: var(--error-color);
+	}
+}
+
+.field:focus+.floatingLabel {
+	top: 0;
+	transform: translateY(-50%);
+	font-size: 12px;
+	color: var(--brand-color) !important;
+
+	.fieldWrap.error & {
+		color: var(--error-color) !important;
+	}
+}
+
+.field:not(:placeholder-shown)+.floatingLabel {
+	top: 0;
+	transform: translateY(-50%);
+	font-size: 12px;
+	color: rgba(255, 255, 255, .7);
+
+	.fieldWrap.error & {
+		color: var(--error-color);
+	}
+}
+
+.floatingError {
+	color: var(--error-color);
+	font-size: 12px;
+	position: absolute;
+	top: calc(100% + 5px);
+	left: 0;
+}
+
+.btn {
+	background-color: var(--brand-color);
+	border-radius: 5px;
+	padding: 12px 15px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	gap: 8px;
+	margin: 0 auto;
+	outline: none;
+	transition: background-color 0.3s ease 0s;
+
+	&:hover,
+	&:focus {
+		background-color: var(--brand-color-hover);
+	}
+
+	svg {
+		font-size: 1.1em;
+		position: relative;
+		top: -1px;
+	}
+}
+
+.addText {
+	text-align: center;
+}
+
+.linkReg {
+	color: var(--brand-color);
+	transition: color 0.3s ease 0s;
+	outline: none;
+
+	&:hover,
+	&:focus {
+		color: var(--brand-color-hover);
+	}
+}

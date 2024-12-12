@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import s from './SearchBox.module.css';
-import { changeFilter } from '../../redux/filtersSlice';
 import { MdOutlinePersonSearch } from 'react-icons/md';
-import { selectContacts, selectFilteredContacts, selectValueFilter } from '../../redux/selectors';
+import { selectContacts, selectFilteredContacts } from '../../redux/contacts/selectors';
+import { changeFilter } from '../../redux/filters/slice';
+import { selectValueFilter } from '../../redux/filters/selectors';
 
 const SearchBox = () => {
 

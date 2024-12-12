@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import s from "./ErrorMessage.module.css"
-import { selectError } from "../../redux/selectors";
+import s from "./ModalErrorAuth.module.css"
 import Modal from 'react-modal';
 import { IoCloseOutline } from "react-icons/io5";
-import { clearError } from "../../redux/contactsSlice";
 import { BiSolidErrorAlt } from "react-icons/bi";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { useEffect } from "react";
+import { selectError } from "../../redux/auth/selectors";
+import { clearError } from "../../redux/auth/slice";
 
 const customStyles = {
 	overlay: {
@@ -28,13 +28,13 @@ const customStyles = {
 	},
 };
 
-const ErrorMessage = () => {
+const ModalErrorAuth = ({ message }) => {
 
 	const error = useSelector(selectError);
 	const dispatch = useDispatch();
 
 	const handleClose = () => {
-		// Скидаємо помилку в contactsSlice
+		// Скидаємо помилку в стані Auth
 		dispatch(clearError());
 	};
 
@@ -54,11 +54,9 @@ const ErrorMessage = () => {
 			style={customStyles}
 		>
 			<div className={s.modalWrap}>
-				<h3 className={s.title}><BiSolidErrorAlt className={s.icon} /><span>Something went wrong</span></h3>
-				<div className={s.content}>
-					<p>Error: {error}.</p>
-					<p>Please refresh the page and try again.</p>
-				</div>
+				<h3 className={s.title}><BiSolidErrorAlt className={s.icon} /><span>Error</span></h3>
+				<p className={s.errorText}>{error}</p>
+				<p className={s.text}>{message}</p>
 				<button className={s.btn} type="button" onClick={handleClose}><IoMdCheckmarkCircleOutline /><span>Ok</span></button>
 				<button
 					className={s.btnClose}
@@ -72,4 +70,4 @@ const ErrorMessage = () => {
 	)
 }
 
-export default ErrorMessage
+export default ModalErrorAuth

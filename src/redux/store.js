@@ -1,7 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { contactsReducer } from "./contactsSlice";
-import { filtersReducer } from "./filtersSlice";
-import { modalsReducer } from "./modalsSlice";
+import { contactsReducer } from "./contacts/slice";
+import { modalsReducer } from "./modals/slice";
+import { filtersReducer } from "./filters/slice";
+import { authReducer } from "./auth/slice";
 
 // Код оголошення редюсерів слайсів
 export const store = configureStore({
@@ -9,5 +10,6 @@ export const store = configureStore({
 		contacts: contactsReducer,
 		filters: filtersReducer,
 		modals: modalsReducer,
+		auth: authReducer,
 	}
 });

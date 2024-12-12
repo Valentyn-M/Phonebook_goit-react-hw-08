@@ -7,6 +7,7 @@ import Modal from 'react-modal';
 import { Provider } from 'react-redux'
 // Імпортуємо створений стор
 import { store } from "./redux/store";
+import { BrowserRouter } from 'react-router-dom';
 
 // Установка кореневого елемента для бібліотеки React Modal.
 Modal.setAppElement('#root');
@@ -14,7 +15,9 @@ Modal.setAppElement('#root');
 createRoot(document.getElementById('root')).render(
 	<StrictMode>
 		<Provider store={store}>
-			<App />
+			<BrowserRouter>
+				<App />
+			</BrowserRouter>
 		</Provider>
 	</StrictMode>,
 )

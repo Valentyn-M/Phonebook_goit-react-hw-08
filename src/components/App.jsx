@@ -1,50 +1,56 @@
-import { useEffect } from 'react';
-import './App.css'
-import ContactForm from './ContactForm/ContactForm'
-import ContactList from './ContactList/ContactList'
-import Footer from './Footer/Footer';
-import Header from './Header/Header';
-import SearchBox from './SearchBox/SearchBox'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from '../redux/contactsOps';
+import './App.css'
+import { selectIsRefreshing } from '../redux/auth/selectors';
+import { lazy, useEffect } from 'react';
+import Layout from './Layout';
+import { Route, Routes } from 'react-router-dom';
+import { refreshUser } from '../redux/auth/operations';
 import Loader from './Loader/Loader';
-import { selectContacts, selectError, selectLoading } from '../redux/selectors';
-import ErrorMessage from './ErrorMessage/ErrorMessage';
+
+const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
+const RestrictedRoute = lazy(() => import("./RestrictedRoute"));
+const RegistrationPage = lazy(() => import("../pages/RegistrationPage/RegistrationPage"));
+const LoginPage = lazy(() => import("../pages/LoginPage/LoginPage"));
+const PrivateRoute = lazy(() => import("./PrivateRoute"));
+const ContactsPage = lazy(() => import("../pages/ContactsPage/ContactsPage"));
 
 function App() {
+
 	const dispatch = useDispatch();
+	const isRefreshing = useSelector(selectIsRefreshing);
 
 	useEffect(() => {
-		// Після монтування компоннета отримуємо дані з бекенда
-		dispatch(fetchContacts());
+		dispatch(refreshUser());
 	}, [dispatch]);
 
-	// Отримуємо зі стану Redux дані про стан loading та error
-	const isLoading = useSelector(selectLoading);
-	const error = useSelector(selectError);
-
-	const allContacts = useSelector(selectContacts).length;
-
-	return (
-		<>
-			<header className='header'>
-				<Header />
-			</header>
-
-			<main className='main'>
-				<ContactForm />
-				{allContacts > 1 && <SearchBox />}
-				<ContactList />
-			</main>
-
-			<footer className='footer'>
-				<Footer />
-			</footer>
-
-			{isLoading && <Loader />}
-			{error && <ErrorMessage />}
-		</>
-	)
+	return isRefreshing ? (
+		<Loader />
+	) : (
+		<Layout>
+			<Routes>
+				<Route path="/" element={<HomePage />} />
+				<Route
+					path="/register"
+					element={
+						<RestrictedRoute redirectTo="/contacts" component={<RegistrationPage />} />
+					}
+				/>
+				<Route
+					path="/login"
+					element={
+						<RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+					}
+				/>
+				<Route
+					path="/contacts"
+					element={
+						<PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+					}
+				/>
+				{/* <Route path="*" element={<NotFoundPage />} /> */}
+			</Routes>
+		</Layout>
+	);
 }
 
 export default App

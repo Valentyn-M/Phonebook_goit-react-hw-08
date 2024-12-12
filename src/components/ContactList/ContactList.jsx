@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import Contact from "../Contact/Contact"
 import s from "./ContactList.module.css"
 
-import { selectFilteredContacts, selectSuccessAdd, selectSuccessDelete } from "../../redux/selectors";
+import { selectFilteredContacts, selectSuccessAdd, selectSuccessDelete } from "../../redux/contacts/selectors";
 import { useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { clearSuccess } from "../../redux/contactsSlice";
+import { clearSuccess } from "../../redux/contacts/slice";
 
 const ContactList = () => {
 

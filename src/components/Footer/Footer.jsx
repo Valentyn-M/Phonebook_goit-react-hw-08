@@ -1,4 +1,3 @@
-import { FaAddressBook } from "react-icons/fa6";
 import s from "./Footer.module.css"
 
 const Footer = () => {
@@ -6,7 +5,7 @@ const Footer = () => {
 	const currentYear = new Date().getFullYear();
 
 	return (
-		<div className={s.copyright}><FaAddressBook className={s.icon} /> Phonebook | Built with React | {currentYear}</div>
+		<div className={s.copyright}>Phonebook | Built with React | {currentYear}</div>
 	)
 }
 

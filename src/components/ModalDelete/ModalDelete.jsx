@@ -1,13 +1,13 @@
 import Modal from 'react-modal';
 import s from './ModalDelete.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectModalDelete } from '../../redux/selectors';
 import { useEffect } from 'react';
-import { toggleModalDelete } from '../../redux/modalsSlice';
 import { MdOutlineDelete } from 'react-icons/md';
 import { IoCloseOutline } from 'react-icons/io5';
 import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
-import { deleteContact } from '../../redux/contactsOps';
+import { selectModalDelete } from '../../redux/modals/selectors';
+import { deleteContact } from '../../redux/contacts/operations';
+import { toggleModalDelete } from '../../redux/modals/slice';
 
 const customStyles = {
 	overlay: {

@@ -1,15 +1,15 @@
 import Modal from 'react-modal';
 import s from './ModalName.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleModalName } from '../../redux/modalsSlice';
+import { toggleModalName } from '../../redux/modals/slice';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from "yup";
 import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
 import { IoCloseOutline } from 'react-icons/io5';
-import { editContactName } from '../../redux/contactsOps';
-import { selectModalName } from '../../redux/selectors';
+import { selectModalName } from '../../redux/modals/selectors';
 import { useEffect } from 'react';
 import { MdOutlinePersonOutline } from 'react-icons/md';
+import { editContactName } from '../../redux/contacts/operations';
 
 const customStyles = {
 	overlay: {

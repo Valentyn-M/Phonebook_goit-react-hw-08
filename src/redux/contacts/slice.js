@@ -1,5 +1,6 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit"
-import { addContact, fetchContacts, deleteContact, editContactName, editContactNumber } from "./contactsOps";
+import { addContact, fetchContacts, deleteContact, editContactName, editContactNumber } from "./operations";
+import { logout } from "../auth/operations";
 
 // Початковий стан редюсера слайсу
 const initialState = {
@@ -32,6 +33,10 @@ const slice = createSlice({
 				state.loading = false;
 				state.error = null;
 				state.items = action.payload;
+			})
+			// При logoutі користвуача очищаємо всі дані в стейті
+			.addCase(logout.fulfilled, () => {
+				return initialState;
 			})
 			.addCase(addContact.fulfilled, (state, action) => {
 				state.loading = false;

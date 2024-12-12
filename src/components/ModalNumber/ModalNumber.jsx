@@ -1,13 +1,13 @@
 import Modal from 'react-modal';
 import s from './ModalNumber.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleModalNumber } from '../../redux/modalsSlice';
+import { toggleModalNumber } from '../../redux/modals/slice';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from "yup";
 import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
 import { IoCloseOutline } from 'react-icons/io5';
-import { editContactNumber } from '../../redux/contactsOps';
-import { selectModalNumber } from '../../redux/selectors';
+import { editContactNumber } from '../../redux/contacts/operations';
+import { selectModalNumber } from '../../redux/modals/selectors';
 import { useEffect } from 'react';
 import { MdOutlinePhone } from 'react-icons/md';
 

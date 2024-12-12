@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { MdOutlinePersonAdd, MdOutlinePersonOutline, MdOutlinePhone } from "react-icons/md";
 import { useRef } from "react";
-import { addContact } from "../../redux/contactsOps";
+import { addContact } from "../../redux/contacts/operations";
 
 const ContactForm = () => {
 

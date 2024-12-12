@@ -1,9 +1,9 @@
 .copyright {
 	font-size: 18px;
-	font-weight: 500;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	max-width: 1130px;
 }
 
 .icon {

@@ -4,7 +4,8 @@
 	max-height: 90vh;
 	padding: 30px 15px 20px;
 	position: relative;
-	background-color: #252728;
+	background-color: var(--main-bg-color);
+	border: 1px solid var(--main-border-color);
 }
 
 .form {
@@ -45,7 +46,7 @@
 	padding: 10px 12px;
 	width: 100%;
 	color: #fff;
-	background-color: #252728;
+	background-color: var(--main-bg-color);
 	border: 1px solid #fff;
 	border-color: rgba(255, 255, 255, .7);
 	outline: none;
@@ -54,19 +55,19 @@
 
 	&:hover,
 	&:focus {
-		border-color: #0866FF;
+		border-color: var(--brand-color);
 	}
 
 	&:focus {
-		box-shadow: 0 0 0 1px #0866FF;
+		box-shadow: 0 0 0 1px var(--brand-color);
 	}
 
 	.fieldWrap.error & {
-		border-color: #F02849;
-		color: #F02849;
+		border-color: var(--error-color);
+		color: var(--error-color);
 
 		&:focus {
-			box-shadow: 0 0 0 1px #F02849;
+			box-shadow: 0 0 0 1px var(--error-color);
 		}
 	}
 }
@@ -77,13 +78,14 @@
 	left: 10px;
 	transform: translateY(-50%);
 	padding: 0 5px;
+	border-radius: 5px;
 	background-color: #252728;
 	color: rgba(255, 255, 255, .7);
 	transition: top 0.3s ease, transform 0.3s ease, font-size 0.3s ease, color 0.3s ease 0s;
 	pointer-events: none;
 
 	.fieldWrap.error & {
-		color: #F02849;
+		color: var(--error-color);
 	}
 }
 
@@ -92,10 +94,10 @@
 	left: 10px;
 	transform: translateY(-50%);
 	font-size: 12px;
-	color: #5aa7ff !important;
+	color: var(--brand-color) !important;
 
 	.fieldWrap.error & {
-		color: #F02849 !important;
+		color: var(--error-color) !important;
 	}
 }
 
@@ -107,20 +109,20 @@
 	color: rgba(255, 255, 255, .7);
 
 	.fieldWrap.error & {
-		color: #F02849;
+		color: var(--error-color);
 	}
 }
 
 .floatingError {
-	color: #F02849;
+	color: var(--error-color);
 	font-size: 12px;
 	position: absolute;
 	top: calc(100% + 5px);
-	left: 15px;
+	left: 0;
 }
 
 .btn {
-	background-color: #0866FF;
+	background-color: var(--brand-color);
 	border-radius: 5px;
 	padding: 9px 15px;
 	width: 100%;
@@ -134,12 +136,12 @@
 
 	&:hover,
 	&:focus {
-		background-color: #4A74F3;
+		background-color: var(--brand-color-hover);
 	}
 }
 
 .error {
-	color: #F1344C;
+	color: var(--error-color);
 	font-size: 14px;
 }
 
@@ -164,6 +166,6 @@
 	}
 
 	&:focus {
-		outline: 2px solid #0866FF;
+		outline: 2px solid var(--brand-color);
 	}
 }
