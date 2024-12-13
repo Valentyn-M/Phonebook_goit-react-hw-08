@@ -1,12 +1,13 @@
 import DocumentTitle from "../../components/DocumentTitle"
 import RegistrationForm from "../../components/RegistrationForm/RegistrationForm"
+import s from "./RegistrationPage.module.css"
 
 const RegistrationPage = () => {
 	return (
-		<>
-			<DocumentTitle>Phonebook | Register</DocumentTitle>
+		<div className={s.registerPage}>
+			<DocumentTitle>Register</DocumentTitle>
 			<RegistrationForm />
-		</>
+		</div>
 	)
 }
 

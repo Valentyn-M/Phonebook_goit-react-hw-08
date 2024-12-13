@@ -20,7 +20,7 @@ const Navigation = () => {
 		<>
 			<nav className={s.homeNav}>
 				<NavLink to="/" className={({ isActive }) => clsx(buildLinkClass({ isActive }), s.home)}>
-					<FaAddressBook className={s.icon} /> Phonebook
+					<FaAddressBook className={s.icon} /><span className={s.appName}>Phonebook</span>
 				</NavLink>
 			</nav>
 			<nav className={s.mainNav}>

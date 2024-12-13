@@ -2,8 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 30px;
-	min-height: 100vh;
+	height: 100%;
 }
 
 .header {
@@ -15,13 +14,13 @@
 	align-items: center;
 	justify-content: center;
 	border-bottom: 1px solid var(--main-border-color);
+	flex-shrink: 0;
 }
 
 .main {
 	display: flex;
 	flex-direction: column;
-	gap: 30px;
-	max-width: 1130px;
+	align-items: center;
 	padding: 0 15px;
 	flex-grow: 1;
 	width: 100%;
@@ -36,4 +35,5 @@
 	width: 100%;
 	padding: 0 15px;
 	border-top: 1px solid var(--main-border-color);
+	flex-shrink: 0;
 }

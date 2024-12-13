@@ -51,6 +51,7 @@ function App() {
 					}
 				/>
 				{/* <Route path="*" element={<NotFoundPage />} /> */}
+				{/* TODO 404 */}
 			</Routes>
 		</Layout>
 	);

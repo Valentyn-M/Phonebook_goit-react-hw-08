@@ -1,27 +1,48 @@
 import { useDispatch, useSelector } from 'react-redux'
-// import s from './UserMenu.module.css'
-import { selectError, selectLoading, selectUser } from '../../redux/auth/selectors'
+import s from './UserMenu.module.css'
+import { selectLoading, selectUser } from '../../redux/auth/selectors'
 import { logout } from '../../redux/auth/operations';
 import Loader from '../Loader/Loader';
-import ModalErrorAuth from '../ModalErrorAuth/ModalErrorAuth';
+import { IoIosArrowDown } from 'react-icons/io';
+import { MdOutlineLogout } from 'react-icons/md';
+import { useEffect, useRef } from 'react';
 
 const UserMenu = () => {
 
 	const dispatch = useDispatch();
 	const user = useSelector(selectUser);
-
-	// Отримуємо зі стану Redux дані про стан loading та error
 	const isLoading = useSelector(selectLoading);
-	const error = useSelector(selectError);
-	const errorText = "Check the entered data and make sure it is correct.";
+
+	const btnRefLogout = useRef(null);
+	const btnRefUserName = useRef(null);
+	const handleClick = () => {
+		btnRefLogout.current.classList.toggle(s.isActive);
+		btnRefUserName.current.classList.toggle(s.isActive);
+	}
+
+	const userMenuRef = useRef(null);
+	useEffect(() => {
+		const handleOutsideClick = (event) => {
+			if (
+				userMenuRef.current &&
+				!userMenuRef.current.contains(event.target)
+			) {
+				btnRefLogout.current?.classList.remove(s.isActive);
+				btnRefUserName.current?.classList.remove(s.isActive);
+			}
+		};
+		document.addEventListener('click', handleOutsideClick);
+		return () => {
+			document.removeEventListener('click', handleOutsideClick);
+		};
+	}, []);
 
 	return (
-		<div>
-			<div>{user.name}</div>
-			<button type='button' onClick={() => dispatch(logout())}>Logout</button>
+		<div className={s.userMenu} ref={userMenuRef}>
+			<button type="button" className={s.userName} onClick={handleClick} ref={btnRefUserName}>{user.name}<IoIosArrowDown className={s.icon} /></button>
+			<button type="button" className={s.logout} onClick={() => dispatch(logout())} ref={btnRefLogout}><MdOutlineLogout className={s.icon} />Logout</button>
 
 			{isLoading && <Loader />}
-			{error && <ModalErrorAuth message={errorText} />}
 		</div>
 	)
 }

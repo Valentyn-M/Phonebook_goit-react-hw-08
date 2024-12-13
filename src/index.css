@@ -74,9 +74,13 @@ img {
 	height: auto;
 }
 
+html,
+body {
+	height: 100%;
+}
+
 /* Project settings */
 body {
-	min-height: 100vh;
 	line-height: 1;
 	overflow-wrap: break-word;
 	min-width: 320px;

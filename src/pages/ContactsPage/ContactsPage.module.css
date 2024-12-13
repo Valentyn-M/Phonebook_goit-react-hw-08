@@ -1,0 +1,9 @@
+.contactsPage {
+	padding: 30px 0;
+	width: 100%;
+	max-width: 1130px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	gap: 30px;
+}

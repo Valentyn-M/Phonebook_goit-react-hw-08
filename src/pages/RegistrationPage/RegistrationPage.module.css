@@ -1,0 +1,9 @@
+.registerPage {
+	padding: 30px 0;
+	max-width: 1130px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+}

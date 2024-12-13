@@ -54,34 +54,32 @@ const LoginForm = () => {
 
 	return (
 		<>
-			<div className={s.loginFormWrap}>
-				<div className={s.loginForm}>
-					<h3 className={s.title}>Login</h3>
-					<Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={registerSchema}>
-						{({ errors, touched }) => (
-							<Form className={s.form}>
-								<label className={s.label} htmlFor="email">
-									<div className={`${s.fieldWrap} ${errors.email && touched.email ? s.error : ""}`}>
-										<MdAlternateEmail className={s.fieldIcon} />
-										<Field className={s.field} type="email" name="email" id="email" placeholder=" " autoComplete="off" />
-										<span className={s.floatingLabel}>Email</span>
-										<ErrorMessage className={s.floatingError} name="email" component="span" />
-									</div>
-								</label>
-								<label className={s.label} htmlFor="password">
-									<div className={`${s.fieldWrap} ${errors.password && touched.password ? s.error : ""}`}>
-										<RiLockPasswordLine className={s.fieldIcon} />
-										<Field className={s.field} type="password" name="password" id="password" placeholder=" " autoComplete="off" />
-										<span className={s.floatingLabel}>Password</span>
-										<ErrorMessage className={s.floatingError} name="password" component="span" />
-									</div>
-								</label>
-								<button className={s.btn} type="submit">Login</button>
-							</Form>
-						)}
-					</Formik>
-					<p className={s.addText}>Don&apos;t have an account? <NavLink to="/register" className={s.linkReg}>Register</NavLink></p>
-				</div>
+			<div className={s.loginForm}>
+				<h3 className={s.title}>Login</h3>
+				<Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={registerSchema}>
+					{({ errors, touched }) => (
+						<Form className={s.form}>
+							<label className={s.label} htmlFor="email">
+								<div className={`${s.fieldWrap} ${errors.email && touched.email ? s.error : ""}`}>
+									<MdAlternateEmail className={s.fieldIcon} />
+									<Field className={s.field} type="email" name="email" id="email" placeholder=" " autoComplete="off" />
+									<span className={s.floatingLabel}>Email</span>
+									<ErrorMessage className={s.floatingError} name="email" component="span" />
+								</div>
+							</label>
+							<label className={s.label} htmlFor="password">
+								<div className={`${s.fieldWrap} ${errors.password && touched.password ? s.error : ""}`}>
+									<RiLockPasswordLine className={s.fieldIcon} />
+									<Field className={s.field} type="password" name="password" id="password" placeholder=" " autoComplete="off" />
+									<span className={s.floatingLabel}>Password</span>
+									<ErrorMessage className={s.floatingError} name="password" component="span" />
+								</div>
+							</label>
+							<button className={s.btn} type="submit">Login</button>
+						</Form>
+					)}
+				</Formik>
+				<p className={s.addText}>Don&apos;t have an account? <NavLink to="/register" className={s.link}>Register</NavLink></p>
 			</div>
 
 			{isLoading && <Loader />}

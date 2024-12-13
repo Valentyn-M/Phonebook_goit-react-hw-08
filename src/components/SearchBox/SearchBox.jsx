@@ -16,24 +16,22 @@ const SearchBox = () => {
 	const filteredContacts = useSelector(selectFilteredContacts).length;
 
 	return (
-		<div className={s.searchWrap}>
-			<div className={s.search}>
-				<h3 className={s.title}>Search by name or number</h3>
-				<label className={s.label}>
-					<div className={s.fieldWrap}>
-						<input
-							className={s.field}
-							type="text"
-							value={filterValue}
-							autoComplete="off"
-							placeholder={`Search amoung ${allContacts} contacts`}
-							onChange={(evt) => dispatch(changeFilter(evt.target.value))}
-						/>
-						<MdOutlinePersonSearch className={s.fieldIcon} />
-						<span className={`${s.floatingLabel} ${filterValue ? s.isActive : ''}`}><span>{filteredContacts}</span> contact{filteredContacts === 1 ? "" : "s"} found</span>
-					</div>
-				</label>
-			</div>
+		<div className={s.search}>
+			<h3 className={s.title}>Search by name or number</h3>
+			<label className={s.label}>
+				<div className={s.fieldWrap}>
+					<input
+						className={s.field}
+						type="text"
+						value={filterValue}
+						autoComplete="off"
+						placeholder={`Search amoung ${allContacts} contacts`}
+						onChange={(evt) => dispatch(changeFilter(evt.target.value))}
+					/>
+					<MdOutlinePersonSearch className={s.fieldIcon} />
+					<span className={`${s.floatingLabel} ${filterValue ? s.isActive : ''}`}><span>{filteredContacts}</span> contact{filteredContacts === 1 ? "" : "s"} found</span>
+				</div>
+			</label>
 		</div>
 	)
 }

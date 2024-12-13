@@ -60,42 +60,40 @@ const RegistrationForm = () => {
 
 	return (
 		<>
-			<div className={s.regFormWrap}>
-				<div className={s.regForm}>
-					<h3 className={s.title}>Register</h3>
-					<Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={registerSchema}>
-						{({ errors, touched }) => (
-							<Form className={s.form}>
-								<label className={s.label} htmlFor="name">
-									<div className={`${s.fieldWrap} ${errors.name && touched.name ? s.error : ""}`}>
-										<MdOutlinePersonOutline className={`${s.fieldIcon} ${s.person}`} />
-										<Field className={s.field} type="text" name="name" id="name" placeholder=" " autoComplete="off" />
-										<span className={s.floatingLabel}>Name</span>
-										<ErrorMessage className={s.floatingError} name="name" component="span" />
-									</div>
-								</label>
-								<label className={s.label} htmlFor="email">
-									<div className={`${s.fieldWrap} ${errors.email && touched.email ? s.error : ""}`}>
-										<MdAlternateEmail className={s.fieldIcon} />
-										<Field className={s.field} type="email" name="email" id="email" placeholder=" " autoComplete="off" />
-										<span className={s.floatingLabel}>Email</span>
-										<ErrorMessage className={s.floatingError} name="email" component="span" />
-									</div>
-								</label>
-								<label className={s.label} htmlFor="password">
-									<div className={`${s.fieldWrap} ${errors.password && touched.password ? s.error : ""}`}>
-										<RiLockPasswordLine className={s.fieldIcon} />
-										<Field className={s.field} type="password" name="password" id="password" placeholder=" " autoComplete="off" />
-										<span className={s.floatingLabel}>Password</span>
-										<ErrorMessage className={s.floatingError} name="password" component="span" />
-									</div>
-								</label>
-								<button className={s.btn} type="submit">Register</button>
-							</Form>
-						)}
-					</Formik>
-					<p className={s.addText}>Already have an account? <NavLink to="/login" className={s.linkReg}>Login</NavLink></p>
-				</div>
+			<div className={s.regForm}>
+				<h3 className={s.title}>Registration</h3>
+				<Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={registerSchema}>
+					{({ errors, touched }) => (
+						<Form className={s.form}>
+							<label className={s.label} htmlFor="name">
+								<div className={`${s.fieldWrap} ${errors.name && touched.name ? s.error : ""}`}>
+									<MdOutlinePersonOutline className={`${s.fieldIcon} ${s.person}`} />
+									<Field className={s.field} type="text" name="name" id="name" placeholder=" " autoComplete="off" />
+									<span className={s.floatingLabel}>Name</span>
+									<ErrorMessage className={s.floatingError} name="name" component="span" />
+								</div>
+							</label>
+							<label className={s.label} htmlFor="email">
+								<div className={`${s.fieldWrap} ${errors.email && touched.email ? s.error : ""}`}>
+									<MdAlternateEmail className={s.fieldIcon} />
+									<Field className={s.field} type="email" name="email" id="email" placeholder=" " autoComplete="off" />
+									<span className={s.floatingLabel}>Email</span>
+									<ErrorMessage className={s.floatingError} name="email" component="span" />
+								</div>
+							</label>
+							<label className={s.label} htmlFor="password">
+								<div className={`${s.fieldWrap} ${errors.password && touched.password ? s.error : ""}`}>
+									<RiLockPasswordLine className={s.fieldIcon} />
+									<Field className={s.field} type="password" name="password" id="password" placeholder=" " autoComplete="off" />
+									<span className={s.floatingLabel}>Password</span>
+									<ErrorMessage className={s.floatingError} name="password" component="span" />
+								</div>
+							</label>
+							<button className={s.btn} type="submit">Register</button>
+						</Form>
+					)}
+				</Formik>
+				<p className={s.addText}>Already have an account? <NavLink to="/login" className={s.link}>Login</NavLink></p>
 			</div>
 
 			{isLoading && <Loader />}
