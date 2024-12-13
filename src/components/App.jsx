@@ -6,6 +6,7 @@ import Layout from './Layout';
 import { Route, Routes } from 'react-router-dom';
 import { refreshUser } from '../redux/auth/operations';
 import Loader from './Loader/Loader';
+import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const RestrictedRoute = lazy(() => import("./RestrictedRoute"));
@@ -50,8 +51,7 @@ function App() {
 						<PrivateRoute redirectTo="/login" component={<ContactsPage />} />
 					}
 				/>
-				{/* <Route path="*" element={<NotFoundPage />} /> */}
-				{/* TODO 404 */}
+				<Route path="*" element={<NotFoundPage />} />
 			</Routes>
 		</Layout>
 	);

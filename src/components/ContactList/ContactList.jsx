@@ -4,7 +4,7 @@ import Contact from "../Contact/Contact"
 import s from "./ContactList.module.css"
 
 import { selectFilteredContacts, selectSuccessAdd, selectSuccessDelete } from "../../redux/contacts/selectors";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { clearSuccess } from "../../redux/contacts/slice";
 
@@ -16,17 +16,21 @@ const ContactList = () => {
 	const isSuccessAdd = useSelector(selectSuccessAdd);
 	const isSuccessDelete = useSelector(selectSuccessDelete);
 	const dispatch = useDispatch();
+	const didMount = useRef(false); // Захист від подвійного виклику toast
 	useEffect(() => {
-		if (isSuccessAdd) {
-			toast.success('Contact successfully created');
-			dispatch(clearSuccess('successAdd'));
-		};
-		if (isSuccessDelete) {
-			toast.success('Contact successfully deleted');
-			dispatch(clearSuccess('successDelete'));
+		if (didMount.current) {
+			if (isSuccessAdd) {
+				toast.success("Contact successfully created");
+				dispatch(clearSuccess("successAdd"));
+			}
+			if (isSuccessDelete) {
+				toast.success("Contact successfully deleted");
+				dispatch(clearSuccess("successDelete"));
+			}
+		} else {
+			didMount.current = true;
 		}
 	}, [isSuccessAdd, isSuccessDelete, dispatch]);
-
 
 	return (
 		<>

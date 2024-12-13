@@ -6,10 +6,8 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../redux/auth/operations';
 import { NavLink } from 'react-router-dom';
-import toast, { Toaster } from 'react-hot-toast';
-import { selectError, selectIsLoggedIn, selectLoading, selectUser } from '../../redux/auth/selectors';
+import { selectError, selectLoading } from '../../redux/auth/selectors';
 import ModalErrorAuth from '../ModalErrorAuth/ModalErrorAuth';
-import { useEffect } from 'react';
 import Loader from '../Loader/Loader';
 
 
@@ -38,14 +36,6 @@ const LoginForm = () => {
 		dispatch(login(values))
 		actions.resetForm();
 	}
-
-	const userName = useSelector(selectUser).name;
-	const isLoggedIn = useSelector(selectIsLoggedIn);
-	useEffect(() => {
-		if (isLoggedIn) {
-			toast.success(`welcome ${userName}!`);
-		};
-	}, [isLoggedIn, userName, dispatch]);
 
 	// Отримуємо зі стану Redux дані про стан loading та error
 	const isLoading = useSelector(selectLoading);
@@ -84,19 +74,6 @@ const LoginForm = () => {
 
 			{isLoading && <Loader />}
 			{error && <ModalErrorAuth message={errorText} />}
-			<Toaster
-				position="top-center"
-				reverseOrder={false}
-				toastOptions={{
-					success: {
-						duration: 2500,
-						style: {
-							background: '#E2E5E9',
-						},
-					}
-				}}
-			/>
-
 		</>
 	)
 }
