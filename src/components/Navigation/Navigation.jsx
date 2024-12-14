@@ -23,13 +23,11 @@ const Navigation = () => {
 					<FaAddressBook className={s.icon} /><span className={s.appName}>Phonebook</span>
 				</NavLink>
 			</nav>
-			{isLoggedIn && (
-				<nav className={s.mainNav}>
-					<NavLink to="/contacts" end className={buildLinkClass} ref={linkRef} onClick={handleClick}>
-						Contacts
-					</NavLink>
-				</nav>
-			)}
+			<nav className={s.mainNav}>
+				<NavLink to="/contacts" end className={buildLinkClass} ref={linkRef} onClick={handleClick}>
+					Contacts
+				</NavLink>
+			</nav>
 		</>
 	)
 }
