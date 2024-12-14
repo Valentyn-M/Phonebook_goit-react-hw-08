@@ -1,0 +1,1 @@
+export const selectViewMode = state => state.viewMode.value;

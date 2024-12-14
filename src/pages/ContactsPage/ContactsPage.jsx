@@ -9,6 +9,7 @@ import SearchBox from '../../components/SearchBox/SearchBox';
 import ModalError from '../../components/ModalError/ModalError';
 import { selectContacts, selectError, selectLoading } from '../../redux/contacts/selectors';
 import s from "./ContactsPage.module.css"
+import AdditionalFeatures from '../../components/AdditionalFeatures/AdditionalFeatures';
 
 
 const ContactsPage = () => {
@@ -31,6 +32,7 @@ const ContactsPage = () => {
 			<DocumentTitle>Contacts</DocumentTitle>
 			<ContactForm />
 			{allContacts > 1 && <SearchBox />}
+			{allContacts > 0 && <AdditionalFeatures />}
 			{/* TODO Sorting (by name, by date added), Compact and advanced mode */}
 			{isLoading ? <Loader2 /> : <ContactList />}
 			{error && <ModalError />}

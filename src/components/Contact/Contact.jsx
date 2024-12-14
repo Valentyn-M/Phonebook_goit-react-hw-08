@@ -2,13 +2,14 @@
 // Для цього у бібліотеці React Redux є хук useDispatch(), який повертає посилання на функцію надсилання екшенів dispatch
 import { useDispatch, useSelector } from "react-redux";
 import s from "./Contact.module.css"
-import { MdOutlinePersonOutline, MdOutlinePersonRemove, MdOutlinePhone } from "react-icons/md";
+import { MdOutlineDelete, MdOutlinePersonOutline, MdOutlinePersonRemove, MdOutlinePhone } from "react-icons/md";
 import { toggleModalDelete, toggleModalName, toggleModalNumber } from "../../redux/modals/slice";
 import ModalName from "../ModalName/ModalName";
 import ModalNumber from "../ModalNumber/ModalNumber";
 import { selectActiveContactId, selectModalDelete, selectModalName, selectModalNumber } from "../../redux/modals/selectors";
 import { TbEdit } from "react-icons/tb";
 import ModalDelete from "../ModalDelete/ModalDelete";
+import { selectViewMode } from "../../redux/viewMode/selectors";
 
 const Contact = ({ contact }) => {
 
@@ -32,8 +33,10 @@ const Contact = ({ contact }) => {
 		dispatch(toggleModalDelete({ isActive: true, contactId: id }));
 	};
 
+	const viewMode = useSelector(selectViewMode);
+
 	return (
-		<div className={s.contact}>
+		<div className={`${s.contact} ${viewMode === "tile" ? s.extendedMode : s.compactMode}`}>
 			<ul className={s.list}>
 				<li className={s.field}>
 					<div className={s.fieldItem}><MdOutlinePersonOutline className={s.icon} /><span className={s.fieldValue}>{name}</span></div>
@@ -46,7 +49,8 @@ const Contact = ({ contact }) => {
 			</ul>
 			{/* При клику передаємо колбек-функцію, в якій ми викликаємо екшен та передаємо дані для payload (deleteContacts(id) і відправляємо екшен за допомогою dispatch) */}
 			<button className={s.deleteBtn} onClick={handleOpenModalDelete}>
-				<MdOutlinePersonRemove className={s.deleteBtnIcon} /><span>Delete contact</span>
+				{viewMode === "tile" ? <MdOutlinePersonRemove className={s.deleteBtnIcon} /> : <MdOutlineDelete className={s.deleteBtnIcon} />}
+				<span className={s.deleteBtnText}>Delete contact</span>
 			</button>
 
 			{/* Умовний рендеринг модального вікна для конкретного контакту */}

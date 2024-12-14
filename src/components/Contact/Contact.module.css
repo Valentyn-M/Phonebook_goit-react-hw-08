@@ -1,18 +1,27 @@
 .contact {
-	padding: 20px 15px;
+	padding: 15px;
 	border-radius: 8px;
 	display: flex;
-	flex-direction: column;
 	justify-content: space-between;
 	gap: 20px;
 	background-color: var(--main-bg-color);
 	border: 1px solid var(--main-border-color);
+
+	&.extendedMode {
+		flex-direction: column;
+		padding: 20px 15px;
+	}
 }
 
 .list {
 	display: flex;
 	flex-direction: column;
-	gap: 15px;
+	gap: 8px;
+	width: 100%;
+
+	.extendedMode & {
+		gap: 15px;
+	}
 }
 
 .field {
@@ -27,6 +36,7 @@
 	display: flex;
 	align-items: center;
 	gap: 8px;
+	line-height: 1.2;
 }
 
 .fieldValue {
@@ -65,21 +75,41 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 100%;
 	color: var(--error-color);
 	gap: 8px;
+
+	svg {
+		flex-shrink: 0;
+	}
 
 	&:hover,
 	&:focus {
 		background-color: var(--error-color);
 		box-shadow: none;
 		color: #fff;
+
+		.extendedMode & {
+			width: 100%;
+		}
 	}
 
 	.deleteBtnIcon {
-		transform: scaleX(-1);
-		font-size: 1.1em;
-		position: relative;
-		top: -1px;
+
+		.extendedMode & {
+			transform: scaleX(-1);
+			font-size: 1.1em;
+			position: relative;
+			top: -1px;
+		}
+
+		.compactMode & {
+			font-size: 22px;
+		}
+	}
+
+	.deleteBtnText {
+		.compactMode & {
+			display: none;
+		}
 	}
 }

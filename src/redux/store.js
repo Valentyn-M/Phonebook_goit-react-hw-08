@@ -17,6 +17,8 @@ import {
 	REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { sortingReducer } from "./sorting/slice";
+import { viewModeReducer } from "./viewMode/slice";
 // 2
 // Persisting token field from auth slice to localstorage
 const persistConfig = {
@@ -35,6 +37,8 @@ export const store = configureStore({
 		filters: filtersReducer,
 		modals: modalsReducer,
 		auth: persistedReducer,
+		sorting: sortingReducer,
+		viewMode: viewModeReducer,
 	},
 	// 4
 	middleware: (getDefaultMiddleware) =>

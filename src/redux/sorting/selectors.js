@@ -1,0 +1,1 @@
+export const selectSorted = state => state.sorting.value;

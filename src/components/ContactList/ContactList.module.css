@@ -1,11 +1,76 @@
 .list {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	gap: 20px;
 	width: 100%;
+	box-sizing: border-box;
+	margin: 0 auto;
+	padding: 0;
 }
 
-.item {
-	flex-basis: 350px;
+/* Компактный режим (без сетки) */
+.list.compactMode {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+/* Расширенный режим (tile view) */
+.list.extendedMode {
+	display: grid;
+	gap: 20px;
+	justify-content: center;
+	align-items: start;
+	list-style: none;
+	padding: 0;
+	margin: 0 auto;
+}
+
+/* Стили для элементов внутри сетки */
+.list.extendedMode>li {
+	width: 100%;
+	max-width: 500px;
+	min-width: 290px;
+	margin: 0 auto;
+	box-sizing: border-box;
+}
+
+/* Один контакт */
+.list.extendedMode.oneItem {
+	grid-template-columns: repeat(1, minmax(290px, 500px));
+}
+
+/* Два контакта */
+.list.extendedMode.twoItems {
+	grid-template-columns: repeat(2, minmax(290px, 500px));
+}
+
+/* Три и более контактов */
+.list.extendedMode.threeOrMore {
+	grid-template-columns: repeat(3, minmax(290px, 500px));
+}
+
+/* Адаптация под размеры экрана */
+
+/* 
+   При ширине экрана меньше 910px, 
+   3 колонки (min 3*290px + 2*20px gap = 910px) не поместятся без скролла.
+   Поэтому уменьшаем до 2 колонок для threeOrMore.
+*/
+@media (max-width: 940px) {
+	.list.extendedMode.threeOrMore {
+		grid-template-columns: repeat(2, minmax(290px, 500px));
+	}
+}
+
+/* 
+   При ширине экрана меньше 600px, 
+   даже 2 колонки по 290px + 20px gap = ~600px могут вызвать скролл,
+   поэтому уменьшаем до 1 колонки для threeOrMore и twoItems.
+*/
+@media (max-width: 630px) {
+
+	.list.extendedMode.twoItems,
+	.list.extendedMode.threeOrMore {
+		grid-template-columns: repeat(1, minmax(290px, 500px));
+	}
 }
