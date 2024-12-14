@@ -33,7 +33,6 @@ const ContactsPage = () => {
 			<ContactForm />
 			{allContacts > 1 && <SearchBox />}
 			{allContacts > 0 && <AdditionalFeatures />}
-			{/* TODO Sorting (by name, by date added), Compact and advanced mode */}
 			{isLoading ? <Loader2 /> : <ContactList />}
 			{error && <ModalError />}
 		</div>
