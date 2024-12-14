@@ -7,10 +7,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../redux/auth/operations';
 import { NavLink } from 'react-router-dom';
 import { selectError, selectIsLoggedIn, selectLoading, selectUser } from '../../redux/auth/selectors';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import ModalErrorAuth from '../ModalErrorAuth/ModalErrorAuth';
 import Loader from '../Loader/Loader';
+import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 
 const RegistrationForm = () => {
 	const initialValues = {
@@ -58,6 +59,8 @@ const RegistrationForm = () => {
 		? "Check the entered data and make sure it is correct. Perhaps a user with this email already exists."
 		: "Please refresh the page and try again.";
 
+	const [showPassword, setShowPassword] = useState(false);
+
 	return (
 		<>
 			<div className={s.regForm}>
@@ -84,8 +87,22 @@ const RegistrationForm = () => {
 							<label className={s.label} htmlFor="password">
 								<div className={`${s.fieldWrap} ${errors.password && touched.password ? s.error : ""}`}>
 									<RiLockPasswordLine className={s.fieldIcon} />
-									<Field className={s.field} type="password" name="password" id="password" placeholder=" " autoComplete="off" />
+									<Field
+										className={s.field}
+										type={showPassword ? "text" : "password"}
+										name="password"
+										id="password"
+										placeholder=" "
+										autoComplete="off" />
 									<span className={s.floatingLabel}>Password</span>
+									<button
+										type="button"
+										className={s.togglePassword}
+										onClick={() => setShowPassword((prev) => !prev)}
+										aria-label={showPassword ? "Hide password" : "Show password"}
+									>
+										{showPassword ? <IoMdEyeOff /> : <IoMdEye />}
+									</button>
 									<ErrorMessage className={s.floatingError} name="password" component="span" />
 								</div>
 							</label>

@@ -9,6 +9,8 @@ import { NavLink } from 'react-router-dom';
 import { selectError, selectLoading } from '../../redux/auth/selectors';
 import ModalErrorAuth from '../ModalErrorAuth/ModalErrorAuth';
 import Loader from '../Loader/Loader';
+import { useState } from 'react';
+import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 
 
 const LoginForm = () => {
@@ -42,6 +44,8 @@ const LoginForm = () => {
 	const error = useSelector(selectError);
 	const errorText = "Check the entered data and make sure it is correct.";
 
+	const [showPassword, setShowPassword] = useState(false);
+
 	return (
 		<>
 			<div className={s.loginForm}>
@@ -60,8 +64,22 @@ const LoginForm = () => {
 							<label className={s.label} htmlFor="password">
 								<div className={`${s.fieldWrap} ${errors.password && touched.password ? s.error : ""}`}>
 									<RiLockPasswordLine className={s.fieldIcon} />
-									<Field className={s.field} type="password" name="password" id="password" placeholder=" " autoComplete="off" />
+									<Field
+										className={s.field}
+										type={showPassword ? "text" : "password"}
+										name="password"
+										id="password"
+										placeholder=" "
+										autoComplete="off" />
 									<span className={s.floatingLabel}>Password</span>
+									<button
+										type="button"
+										className={s.togglePassword}
+										onClick={() => setShowPassword((prev) => !prev)}
+										aria-label={showPassword ? "Hide password" : "Show password"}
+									>
+										{showPassword ? <IoMdEyeOff /> : <IoMdEye />}
+									</button>
 									<ErrorMessage className={s.floatingError} name="password" component="span" />
 								</div>
 							</label>
