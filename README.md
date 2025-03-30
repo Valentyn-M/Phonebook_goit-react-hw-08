@@ -1,4 +1,4 @@
-![Preview](./preview.png)
+![Preview](./preview.jpg)
 
 # Phonebook Application 📞
 
