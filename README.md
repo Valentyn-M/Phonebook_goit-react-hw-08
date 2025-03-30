@@ -1,3 +1,5 @@
+![Preview](./preview.png)
+
 # Phonebook Application 📞
 
 ### React Application with Redux, Router, and Asynchronous Requests
